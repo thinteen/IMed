@@ -1,0 +1,30 @@
+<div class="container">
+    <div style="margin-bottom: 50px;">
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <button class="btn btn-outline-secondary" type="button" (click)="getBrandListByName()">Search</button>
+            </div>
+
+            <input type="search" class="form-control" aria-describedby="basic-addon1" [(ngModel)]="searchString"
+                #ctrl="ngModel" placeholder="brand name" aria-label="Search" name="input">
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-3" *ngFor="let dataItem of brandList">
+            <div class="card" style="max-height: 400px;">
+                <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light" style="text-align: center;"
+                    routerLink="/pharmacy-list/{{dataItem.brandId}}">
+                    <img src="assets/img/{{dataItem.logo}}" class="img-fluid" style="max-height: 200px;"/>
+                </div>
+
+                <div class="card-body">
+                    <h5 class="card-title" style="margin-bottom: 40px;">{{dataItem.name}}</h5>
+                    <div style="text-align: center;">
+                        <a routerLink="/pharmacy-list/{{dataItem.brandId}}" class="btn btn-primary">Список аптек</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

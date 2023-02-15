@@ -1,0 +1,47 @@
+<div class="container" style="margin-bottom: 100px;">
+
+    <div class="p-3 mb-2 bg-light text-dark">
+        <h2 style="margin-bottom: 10px;">{{quantityMedicineInPharmacyList[0].medicineName}}</h2>
+        <h5 style="margin-bottom: 20px;">Категория: {{quantityMedicineInPharmacyList[0].medicineCategory}}</h5>
+
+        <div class="d-flex justify-content align-items-center" style="margin-bottom: 30px;">
+            <img src="assets/img/{{quantityMedicineInPharmacyList[0].medicineImage}}" alt="..." class="img-thumbnail"
+                style="height: 400px; width: 400px;">
+
+            <div style="margin-left: 300px;">
+                <h3 style="border-bottom: 2px solid #000000;">Цена от: {{quantityMedicineInPharmacyList[0].medicinePrice}} <i class="fa fa-rub" aria-hidden="true"></i></h3>
+            </div>
+
+        </div>
+
+        <h5>Инструкция:</h5>
+
+        <p style="margin-bottom: 30px;">{{quantityMedicineInPharmacyList[0].medicineInstruction}}</p>
+    
+        <h5>Где купить:</h5>
+    </div>
+    <table class="table table-striped" *ngIf="isInfo == true">
+        <thead>
+            <tr>
+                <th>Название аптеки:</th>
+                <th>Адрес:</th>
+                <th>Номер телефона:</th>
+                <th>Количество в наличии:</th>
+                <th>Цена:</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            <tr *ngFor="let dataItem of quantityMedicineInPharmacyList">
+                <td>{{dataItem.pharmacyName}}</td>
+                <td>{{dataItem.pharmacyAddress}}</td>
+                <td>{{dataItem.pharmacyPhoneNumber}}</td>
+                <td>{{dataItem.medicineResidual}}</td>
+                <td>{{dataItem.medicinePrice}} <i class="fa fa-rub" aria-hidden="true"></i></td>
+            </tr>
+        </tbody>
+
+        
+    </table>
+    <h5 *ngIf="isInfo == false">Товар закончился</h5>
+</div>

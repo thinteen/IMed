@@ -1,0 +1,24 @@
+<div class="container">
+
+    <h4 style="margin-bottom: 20px;">Популярные препараты:</h4>
+
+    <div class="row">
+        <div class="col-3" *ngFor="let dataItem of medicineList">
+            <div class="card" style="margin-bottom: 30px;">
+                <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
+                    <img src="assets/img/{{dataItem.image}}" routerLink="/medicine-page/{{dataItem.medicineId}}"
+                        class="img-fluid" style="max-height: 200px;"/>
+                </div>
+
+                <div class="card-body">
+                    <h5 class="card-title">{{dataItem.name}}</h5>
+                    <p class="card-text">{{dataItem.category}}</p>
+                    <div style="text-align: center;">
+                        <a routerLink="/medicine-page/{{dataItem.medicineId}}" class="btn btn-primary">Подробнее</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+</div>

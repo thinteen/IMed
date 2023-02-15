@@ -1,0 +1,43 @@
+<div class="container">
+    <div style="margin-bottom: 50px;">
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <button class="btn btn-outline-secondary" type="button"
+                    (click)="getMedicineListByName()">Search</button>
+            </div>
+
+            <input type="search" class="form-control" aria-describedby="basic-addon1" [(ngModel)]="searchString"
+                #ctrl="ngModel" placeholder="medicine name" aria-label="Search" name="input"
+                style="margin-right: -17px;">
+
+            <div class="col-sm-2">
+                <select class="form-control" [(ngModel)]="category" #ctrl="ngModel" name="category"
+                    (click)="getMedicineListByCategory()">
+                    <option>Категория</option>
+                    <option *ngFor="let dataItem of categoryList">
+                        {{dataItem}}
+                    </option>
+                </select>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-3" *ngFor="let dataItem of medicineList">
+            <div class="card" style="max-height: 400px;">
+                <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
+                    <img src="assets/img/{{dataItem.image}}" routerLink="/medicine-page/{{dataItem.medicineId}}"
+                        class="img-fluid" />
+                </div>
+
+                <div class="card-body">
+                    <h5 class="card-title">{{dataItem.name}}</h5>
+                    <p class="card-text">{{dataItem.category}}</p>
+                    <div style="text-align: center;">
+                        <a routerLink="/medicine-page/{{dataItem.medicineId}}" class="btn btn-primary">Подробнее</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

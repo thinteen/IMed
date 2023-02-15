@@ -1,0 +1,57 @@
+<div class="container">
+
+    <h1>{{brand.name}}: препараты</h1>
+
+    <div style="margin-bottom: 15px;">
+        <button type="button" class="btn btn-primary float-right m-2" data-toggle="modal" data-target="#exampleModal"
+            data-backdrop="static" data-keyboard="false" (click)="addMedicine()">Добавить препарат</button>
+    </div>
+
+    <div class="modal fade bd-example-modal" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document" style="max-width: 400px;">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">{{modalTitle}}</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="closeClick()">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <app-add-edit-medicine-price-modal [brandMedicinePrice]="brandMedicinePrice" [medicineIdForEdit]="medicineIdForEdit" [editOrAdd]="editOrAdd" *ngIf="activateAddEditMedicinePriceComponent"></app-add-edit-medicine-price-modal>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <table class="table table-striped" *ngIf="medicineList[0] != null">
+        <thead>
+            <tr>
+                <th>Название препарата</th>
+                <th>Категория</th>
+                <th>Цена</th>
+                <th></th>
+            </tr>
+        </thead>
+
+        <tbody>
+            <tr *ngFor="let dataItem of medicineList">
+                <td>{{dataItem.medicineName}}</td>
+                <td>{{dataItem.category}}</td>
+                <td>{{dataItem.price}} <i class="fa fa-rub" aria-hidden="true"></i></td>
+                <td>
+                    <a class="btn btn-success" (click)="editClick(dataItem)" data-toggle="modal" data-target="#exampleModal"
+                    data-backdrop="static" data-keyboard="false" style="margin-right: 15px;">
+                        <i class="fa fa-pencil" aria-hidden="true"></i>
+                    </a>
+
+                    <a class="btn btn-danger" (click)="deleteBrandMedicinePrice(dataItem.medicineId)">
+                        <i class="fa fa-trash-o" aria-hidden="true"></i>
+                    </a>
+                </td>
+            </tr>  
+        </tbody>
+    </table>
+
+    <h4 style="margin-top: 20px;" *ngIf="medicineList[0] == null">Препаратов пока что нет, но вы можете их добавить</h4>
+</div>

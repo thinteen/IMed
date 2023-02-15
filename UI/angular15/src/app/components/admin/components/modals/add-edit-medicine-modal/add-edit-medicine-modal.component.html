@@ -1,0 +1,47 @@
+<div class="d-flex justify-content-between bd-highlight mb-3">
+
+    <div class="form-froup row" style="margin-bottom: 15px; width: 75%;">
+
+        <label class="col-sm-2 col-form-label">Название препарата</label>
+
+        <div class="col-sm-10" style="margin-bottom: 15px;">
+            <input class="form-control" [(ngModel)]="name" placeholder="Название">
+        </div>
+
+        <label class="col-sm-2 col-form-label">Категория препарата</label>
+
+        <div class="col-sm-10" style="margin-bottom: 15px;">
+            <input class="form-control" [(ngModel)]="category" placeholder="Категория">
+        </div>
+
+        <label class="col-sm-2 col-form-label" style="margin-bottom: 15px;">Ссылка на фото</label>
+
+        <div class="col-sm-10">
+            <input class="form-control" [(ngModel)]="image" placeholder="Ссылка">
+        </div>
+
+        <label class="col-sm-2 col-form-label">Инструкция</label>
+
+        <div class="col-sm-10">
+            <textarea class="form-control" id="message-text" [(ngModel)]="instruction"
+                placeholder="Инструкция"></textarea>
+        </div>
+    </div>
+
+    <div class="ml-3 bd-highlight" style="width: 25%;">
+        <img src="assets/img/{{image}}" height="250px;" width="200px;">
+        <input class="mt-2" type="file" (change)="uploadPhoto($event)" name="file">
+    </div>
+</div>
+
+<button (click)="addMedicine()" *ngIf="medicine.medicineId==0"
+    [disabled]="this.name == '' || this.category == '' || this.image == '' || this.instruction == '' "
+    class="btn btn-primary">
+    Добавить
+</button>
+
+<button (click)="editMedicine()" *ngIf="medicine.medicineId!=0"
+    [disabled]="this.name == '' || this.category == '' || this.image == '' || this.instruction == '' "
+    class="btn btn-primary">
+    Изменить
+</button>

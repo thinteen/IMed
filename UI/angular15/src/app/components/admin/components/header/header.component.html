@@ -1,0 +1,27 @@
+<!-- <div class="container">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" (click)="logOut()">Выход</button>
+</div> -->
+
+<nav class="navbar sticky-top navbar-expand-lg navbar-light" style="background-color: #e3f2fd; margin-bottom: 20px;">
+  <div class="container">
+    <a class="navbar-brand" routerLink="./">IMed</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a routerLink="./brand-list" class="nav-link" href="#">Brands<span class="sr-only">(current)</span></a>
+        </li>
+
+        <li class="nav-item active">
+          <a routerLink="./medicine-list" class="nav-link" href="#">Medicines<span class="sr-only">(current)</span></a>
+        </li>
+      </ul>
+      <a class="nav-link" (click)="logOut()"><i class="fa fa-sign-out" aria-hidden="true"></i><span
+          class="sr-only">(current)</span></a>
+    </div>
+  </div>
+</nav>

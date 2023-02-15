@@ -1,0 +1,27 @@
+<div class="d-flex justify-content-between bd-highlight mb-3">
+    <div class="form-froup row" style="margin-bottom: 15px;">
+
+        <label class="col-sm-2 col-form-label">Название бренда</label>
+
+        <div class="col-sm-10" style="margin-bottom: 15px;">
+            <input class="form-control" [(ngModel)]="name" placeholder="Название">
+        </div>
+
+        <label class="col-sm-2 col-form-label">Ссылка на фото</label>
+
+        <div class="col-sm-10">
+            <input class="form-control" [(ngModel)]="logo" placeholder="Ссылка">
+        </div>
+    </div>
+
+    <div class="ml-3 bd-highlight" style="width: 25%;">
+        <img src="assets/img/{{logo}}" height="250px;" width="200px;">
+        <input class="mt-2" type="file" (change)="uploadPhoto($event)" name="file">
+    </div>
+</div>
+
+<button (click)="addBrand()" *ngIf="brand.brandId==0" [disabled]="this.name == '' || this.logo == '' "
+    class="btn btn-primary">Добавить</button>
+
+<button (click)="editBrand()" *ngIf="brand.brandId!=0" [disabled]="this.name == '' || this.logo == '' "
+    class="btn btn-primary">Изменить</button>

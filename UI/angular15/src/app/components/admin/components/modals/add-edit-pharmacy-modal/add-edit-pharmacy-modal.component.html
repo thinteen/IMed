@@ -1,0 +1,18 @@
+<div class="form-froup row" style="margin-bottom: 15px;">
+
+    <label class="col-sm-2 col-form-label">Адрес</label>
+
+    <div class="col-sm-10" style="margin-bottom: 15px;">
+        <input class="form-control" [(ngModel)]="address" placeholder="Адрес">
+    </div>
+
+    <label class="col-sm-2 col-form-label">Номер телефона</label>
+
+    <div class="col-sm-10">
+        <input class="form-control" [(ngModel)]="phoneNumber" placeholder="Номер телефона">
+    </div>
+</div>
+
+<button (click)="addPharmacy()" *ngIf="pharmacy.pharmacyId==0" [disabled]="this.address == '' || this.phoneNumber == '' " class="btn btn-primary">Добавить</button>
+
+<button (click)="editPharmacy()" *ngIf="pharmacy.pharmacyId!=0" [disabled]="this.address == '' || this.phoneNumber == '' " class="btn btn-primary">Изменить</button>

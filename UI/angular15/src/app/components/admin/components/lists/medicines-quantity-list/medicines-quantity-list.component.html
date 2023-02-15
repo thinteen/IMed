@@ -1,0 +1,57 @@
+<div class="container">
+    <h2>Наличие в аптеке</h2>
+
+    <div style="margin-bottom: 15px;">
+        <button type="button" class="btn btn-primary float-right m-2" data-toggle="modal" data-target="#exampleModal"
+            data-backdrop="static" data-keyboard="false" (click)="addMedicine()">Добавить препарат</button>
+    </div>
+
+    <div class="modal fade bd-example-modal" id="exampleModal" tabindex="-1" role="dialog"
+        aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document" style="max-width: 400px;">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">{{modalTitle}}</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="closeClick()">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <app-add-edit-medicine-count-modal [pharmacyMedicineCount]="pharmacyMedicineCount"
+                        [medicineIdForEdit]="medicineIdForEdit" [editOrAdd]="editOrAdd"
+                        *ngIf="activateAddEditMedicineCountComponent"></app-add-edit-medicine-count-modal>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <table class="table table-striped" *ngIf="pharmacyMedicineList[0] != null">
+        <thead>
+            <tr>
+                <th>Название препарата</th>
+                <th>Количество</th>
+                <th></th>
+            </tr>
+        </thead>
+
+        <tbody>
+            <tr *ngFor="let dataItem of pharmacyMedicineList">
+                <td>{{dataItem.name}}</td>
+                <td>{{dataItem.residual}}</td>
+                <td>
+
+                    <a class="btn btn-success" data-toggle="modal" data-target="#exampleModal" data-backdrop="static"
+                        data-keyboard="false" style="margin-right: 15px;" (click)="editClick(dataItem)">
+                        <i class="fa fa-pencil" aria-hidden="true"></i>
+                    </a>
+
+                    <a class="btn btn-danger" (click)="deleteMedicine(dataItem.medicineId)"><i class="fa fa-trash-o"
+                            aria-hidden="true"></i></a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h4 style="margin-top: 20px;" *ngIf="pharmacyMedicineList[0] == null">Пока что в аптеке нет препаратов, вы можете их
+        добавить.</h4>
+</div>
